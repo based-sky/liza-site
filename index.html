@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для Лизы 💖</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff5fd2,#ff9af5,#ffc6f2);
+height:100vh;
+overflow-x:hidden;
+color:white;
+text-align:center;
+}
+
+/* стартовый экран */
+
+.start{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+button{
+padding:20px 40px;
+font-size:22px;
+border:none;
+border-radius:30px;
+background:#ff3bd4;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px #ff00c8;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 40px #ff00c8;
+}
+
+.main{
+display:none;
+}
+
+h1{
+font-size:60px;
+text-shadow:0 0 20px #ff00c8;
+}
+
+.text{
+font-size:22px;
+max-width:700px;
+margin:auto;
+margin-top:20px;
+}
+
+.gallery{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.gallery img{
+width:250px;
+border-radius:20px;
+box-shadow:0 0 25px #ff77e6;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+}
+
+.petal{
+position:fixed;
+top:-10px;
+width:12px;
+height:12px;
+background:pink;
+border-radius:50%;
+opacity:0.8;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="start">
+<h1>Для Лизы 💖</h1>
+<button onclick="startSite()">Нажми ✨</button>
+</div>
+
+<div class="main" id="main">
+
+<h1>Лиза, с 8 Марта 🌸</h1>
+
+<div class="text">
+Ты очень милая, красивая и прекрасная ✨
+Пусть этот день будет таким же ярким, как ты.
+Пусть в жизни будет много счастья и улыбок 💖
+</div>
+
+<div class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
+
+</div>
+
+<script>
+
+function startSite(){
+document.querySelector(".start").style.display="none";
+document.querySelector(".main").style.display="block";
+}
+
+function createPetal(){
+let petal=document.createElement("div");
+petal.className="petal";
+
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=5+Math.random()*5+"s";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},10000);
+}
+
+setInterval(createPetal,300);
+
+</script>
+
+</body>
+</html>

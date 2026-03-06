@@ -2,97 +2,131 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Для Лизы 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Для Лизы 🌸</title>
 
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Noto+Serif+JP:wght@400;600&display=swap');
+
 body{
 margin:0;
-font-family:Arial;
-background:linear-gradient(135deg,#ff5fd2,#ff9af5,#ffc6f2);
 height:100vh;
-overflow-x:hidden;
+font-family:'Noto Serif JP', serif;
 color:white;
 text-align:center;
+overflow:hidden;
+
+background:
+linear-gradient(160deg,#ffd1e6,#ff6fa3,#c2185b);
 }
 
-/* стартовый экран */
+/* контейнер */
 
-.start{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+.container{
+position:relative;
+z-index:2;
+padding-top:80px;
 }
 
-button{
-padding:20px 40px;
-font-size:22px;
-border:none;
-border-radius:30px;
-background:#ff3bd4;
-color:white;
-cursor:pointer;
-box-shadow:0 0 20px #ff00c8;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.1);
-box-shadow:0 0 40px #ff00c8;
-}
-
-.main{
-display:none;
-}
+/* заголовок */
 
 h1{
+font-family:'Marck Script', cursive;
 font-size:60px;
-text-shadow:0 0 20px #ff00c8;
+margin-bottom:10px;
+text-shadow:0 0 20px rgba(255,255,255,0.6);
 }
 
-.text{
-font-size:22px;
+/* текст */
+
+p{
+font-size:20px;
 max-width:700px;
 margin:auto;
-margin-top:20px;
+margin-bottom:50px;
+line-height:1.6;
 }
 
+/* галерея */
+
 .gallery{
-margin-top:40px;
 display:flex;
 justify-content:center;
-gap:30px;
-flex-wrap:wrap;
+gap:40px;
 }
 
 .gallery img{
-width:250px;
-border-radius:20px;
-box-shadow:0 0 25px #ff77e6;
-transition:0.4s;
+width:220px;
+height:300px;
+object-fit:cover;
+
+border-radius:25px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,0.4),
+0 0 20px rgba(255,120,160,0.4);
+
+transition:0.5s;
 }
 
 .gallery img:hover{
-transform:scale(1.08);
+
+transform:
+scale(1.1)
+rotate(1deg);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,0.5),
+0 0 35px rgba(255,140,180,0.7);
 }
+
+/* ветка сакуры */
+
+.branch{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:140px;
+background-image:url("https://pngimg.com/uploads/cherry_blossom/cherry_blossom_PNG42.png");
+background-size:contain;
+background-repeat:no-repeat;
+background-position:left top;
+opacity:0.9;
+z-index:1;
+}
+
+/* лепестки */
 
 .petal{
 position:fixed;
-top:-10px;
-width:12px;
-height:12px;
-background:pink;
-border-radius:50%;
+top:-50px;
+width:20px;
+height:20px;
+background:radial-gradient(circle at 30% 30%,#ffd1e6,#ff7aa8);
+border-radius:50% 70% 50% 70%;
 opacity:0.8;
 animation:fall linear infinite;
 }
 
 @keyframes fall{
-to{
-transform:translateY(110vh) rotate(360deg);
+
+0%{
+transform:
+translateY(-10vh)
+translateX(0)
+rotate(0deg);
 }
+
+100%{
+transform:
+translateY(110vh)
+translateX(100px)
+rotate(360deg);
+}
+
 }
 
 </style>
@@ -100,51 +134,53 @@ transform:translateY(110vh) rotate(360deg);
 
 <body>
 
-<div class="start">
-<h1>Для Лизы 💖</h1>
-<button onclick="startSite()">Нажми ✨</button>
-</div>
+<div class="branch"></div>
 
-<div class="main" id="main">
+<div class="container">
 
 <h1>Лиза, с 8 Марта 🌸</h1>
 
-<div class="text">
+<p>
 Ты очень милая, красивая и прекрасная ✨
 Пусть этот день будет таким же ярким, как ты.
 Пусть в жизни будет много счастья и улыбок 💖
-</div>
+</p>
 
 <div class="gallery">
+
 <img src="photo1.jpg">
 <img src="photo2.jpg">
 <img src="photo3.jpg">
+
 </div>
 
 </div>
 
 <script>
 
-function startSite(){
-document.querySelector(".start").style.display="none";
-document.querySelector(".main").style.display="block";
-}
+/* создаём лепестки */
 
 function createPetal(){
-let petal=document.createElement("div");
-petal.className="petal";
 
-petal.style.left=Math.random()*100+"vw";
-petal.style.animationDuration=5+Math.random()*5+"s";
+const petal=document.createElement("div")
 
-document.body.appendChild(petal);
+petal.classList.add("petal")
+
+petal.style.left=Math.random()*100+"vw"
+
+petal.style.animationDuration=6+Math.random()*6+"s"
+
+petal.style.opacity=Math.random()
+
+document.body.appendChild(petal)
 
 setTimeout(()=>{
-petal.remove();
-},10000);
+petal.remove()
+},12000)
+
 }
 
-setInterval(createPetal,300);
+setInterval(createPetal,300)
 
 </script>
 
